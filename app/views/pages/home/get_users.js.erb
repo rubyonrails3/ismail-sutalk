@@ -1,7 +1,7 @@
 
 var myJSONObject = <%= raw @rooms.to_json %>
 
-var sid = myJSONObject.room
+var sid = myJSONObject.room[0].sessionId;
 
 alert(sid);
 alert(myJSONObjct);
