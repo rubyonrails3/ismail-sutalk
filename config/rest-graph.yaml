@@ -1,0 +1,16 @@
+development:
+  app_id: '185866364769116'
+  secret: 'd6bd05450e8254f8c0310f67d9fd3a1d'
+  callback_host: 'localhost:3000'
+
+# production:
+#   app_id: '185866364769116'
+#   secret: 'd6bd05450e8254f8c0310f67d9fd3a1d'
+#   canvas: 'sutalktest'
+#   callback_host: 'sutalkfbgem.heroku.com'
+  
+production:
+  app_id: '168684223172954'
+  secret: '2530243c3a4ed2cee53325b0e5493bb1'
+  canvas: 'sutalks'
+  callback_host: 'sutalkfbgem.heroku.com'
