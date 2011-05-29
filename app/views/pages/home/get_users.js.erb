@@ -1,8 +1,11 @@
 
 var myJSONObject = <%= raw @rooms.to_json %>
 
-var sid = myJSONObject.room[0].sessionId;
+var str = "";
 
-alert(sid);
-alert(myJSONObjct);
+for(var i = 0; i < myJSONObject.length; i++) {
+  str += myJSONObject[i].room.sessionId + "\n";
+}
+
+alert(str);
 
