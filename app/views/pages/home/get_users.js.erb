@@ -1,1 +1,5 @@
-alert("<%= escape_javascript(@rooms.to_yaml) %>");
+
+var myJSONObject = <%= @rooms.to_json %>
+
+alert(myJSONObjct);
+
