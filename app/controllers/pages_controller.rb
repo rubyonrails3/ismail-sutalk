@@ -9,7 +9,12 @@ class PagesController < ApplicationController
   end
   
   def get_users
-    @rooms = Room.where("created_at > #{Time.now - 10.minute}" ).first
+    # Current Time 
+    ct = Time.now
+    # New Time
+    nt = Time.new(ct.year, ct.month, ct.day, ct.hour, ct.min, ct.sec, "-00:00")
+    # Compare for the last ten minute visists 
+    @rooms = Room.where("created_at > ?", nt - 10.minutes)
     render "pages/home/get_users"
   end
   
