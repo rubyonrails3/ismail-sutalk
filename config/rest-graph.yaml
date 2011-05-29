@@ -12,5 +12,5 @@ development:
 production:
   app_id: '229124083771048'
   secret: 'b4cdf6e0c551aaa83957476dcd86d52d'
-  canvas: 'sutalks'
+  canvas: 'ismail-sutalks'
   callback_host: 'http://ismail-sutalk2.heroku.com/'
