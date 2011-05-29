@@ -1,1 +1,1 @@
-alert("<%= @rooms.first.to_yaml %>");
+alert("<%= escape_javascript(@rooms.first.to_yaml) %>");
