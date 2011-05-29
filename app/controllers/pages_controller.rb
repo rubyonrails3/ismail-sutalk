@@ -7,4 +7,9 @@ class PagesController < ApplicationController
     @room = Room.assign params, request.remote_ip, rest_graph
     p @room
   end
+  
+  def get_users
+    render "pages/home/get_users"
+  end
+  
 end

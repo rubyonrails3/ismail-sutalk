@@ -115,4 +115,10 @@ function expandCanvas(){
 	FB.Canvas.setSize({ height: 1400 });		
 }
 
-
+/* Ismail code goes here */
+$(function(){
+	$("#makeNewFriendsTitle").live('click', function(){
+		$.getScript("pages/get_users");
+		return false;
+	});
+});

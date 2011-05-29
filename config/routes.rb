@@ -1,5 +1,6 @@
 Sutalk::Application.routes.draw do
   get "pages/home"
+  get "pages/get_users"
   root :to => "pages#home"                  # named route: root_path
 
   # The priority is based upon order of creation:
