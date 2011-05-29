@@ -37,12 +37,12 @@ a {
 	text-decoration: none;
 }
 
-a:hover{
+a:hover {
 	color: #069;
 	text-decoration: underline;
 }
 
-a:visited{
+a:visited {
 	color: #069;	
 }
 
@@ -117,7 +117,7 @@ a.broadcast_button {
   padding: 15px;
 }
 
-a.broadcast_button:active{
+a.broadcast_button:active {
 	background: #008300;
 }
 
@@ -137,13 +137,13 @@ a.new_friends_button {
 	border-left: 2px solid #3b5998; 
 }
 
-a.new_friends_button:active{
+a.new_friends_button:active {
 	background: #4668b3;   
 }
 
 
 /*	Round corners  */
-.round{
+.round {
 	-moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
@@ -304,8 +304,19 @@ footer nav {
 	line-height:1;
 }
 
-#onlineFriends img:hover, #friendWall img:hover{
+#onlineFriends img:hover, #friendWall img:hover {
 	cursor:pointer;
+} 
+
+/* Make new Friends */
+
+#makeNewFriends {
+  margin-left: 8px;
+  margin-top: 32px;
+} 
+
+#makeNewFriendsTitle {
+  padding: 10px;
 }
 
 
