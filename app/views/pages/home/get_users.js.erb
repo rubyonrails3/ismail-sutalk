@@ -1,5 +1,5 @@
 
-var myJSONObject = <%= @rooms.to_json %>
+var myJSONObject = <%= raw @rooms.to_json %>
 
 alert(myJSONObjct);
 
