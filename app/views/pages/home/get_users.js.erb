@@ -10,25 +10,24 @@ var session = null;
 var myJSONObject = <%= raw @rooms.to_json %> 
 // For each room get session key 
 
-
 for(var i = 0; i < myJSONObject.length; i++) { 
 
   sessionId = myJSONObject[i].sessionId;
 
   // Initialize each key in turn  
-  session = initializeSessionId(sessionId);  
+  session = initializeSessionId(sessionId);
 
   // true if recently created else false
-  session.time = myJSONObject[i].time; 
+  session.time = myJSONObject[i].time;
   
   // start some specific session
-  session.connect();
+  session.connect(177891, myJSONObject[i].token);
 }
 
 
 function initializeSessionId(sessionId) { 
 
-  session = TB.initSession(sessionId); 
+  session = TB.initSession(sessionId);
 
   session.addEventListener('sessionConnected', sessionConnectedHandler);
   session.addEventListener('sessionDisconnected', sessionDisconnectedHandler);
@@ -42,7 +41,7 @@ function initializeSessionId(sessionId) {
 
 // on sessionConnected Select Random room (Active|Recent)
 function sessionConnectedHandler(event) { 
-  selectRandomRoom(event.target, event.streams)
+  selectRandomRoom(event.target, event.streams);
 }
 
 
@@ -50,7 +49,7 @@ function selectRandomRoom(targetSession, streams) {
 
   // Active SID
   if(streams.length > 0 && streams.length < 6) { 
-    rand = new Date().getTime() % streams.length
+    rand = new Date().getTime() % streams.length;
     addStream(targetSession, streams[rand]);
     return;
   } 
@@ -71,7 +70,9 @@ function addStream(session, stream) {
   var div = document.createElement('div');
   var divId = stream.streamId;
   div.setAttribute('id', divId);
-  document.body.appendChild(div);
+  document.body.appendChild(div); 
+  var subscribersContainer = document.getElementById('subscribersStartDiv');
+  subscribersContainer.appendChild(div);
   subscribers[stream.streamId] = session.subscribe(stream, divId);
 }
 
