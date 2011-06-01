@@ -8,12 +8,11 @@
 
 var session = null;
 var myJSONObject = <%= raw @rooms.to_json %> 
-console.log(myJSONObject[0].time);
 // For each room get session key 
 
 
 for(var i = 0; i < myJSONObject.length; i++) { 
-
+  console.log(myJSONObject[i]);
   sessionId = myJSONObject[i].room.sessionId;
 
   // Initialize each key in turn  
