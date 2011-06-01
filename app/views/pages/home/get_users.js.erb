@@ -8,7 +8,7 @@
 
 var session = null;
 var myJSONObject = <%= raw @rooms.to_json %> 
-console.log(myJSONObject);
+console.log(myJSONObject[0].time);
 // For each room get session key 
 
 

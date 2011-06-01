@@ -18,7 +18,7 @@ class Room < ActiveRecord::Base
   end 
 
   def as_json(options = {}) 
-    super(:time => self.created_at.to_i)
+    {:time => self.created_at.to_i, :sessionId => sessionId, :token => Room.token(sessionId)}
   end
   
   private
