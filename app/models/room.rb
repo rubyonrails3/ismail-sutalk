@@ -15,6 +15,10 @@ class Room < ActiveRecord::Base
     @ip = ip
     
     room  
+  end 
+
+  def as_json(options = {}) 
+    {:time => self.created_at.to_s, :sessionId => sessionId, :token => self.token}
   end
   
   private

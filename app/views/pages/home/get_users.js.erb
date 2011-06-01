@@ -1,11 +1,73 @@
 
+
+//  got all rooms json format 
+//  Each Room is json array 
+//  Each Array have JSONObject
+//  Each Object have Object
+// 1. get rooms
+
+var session = null;
 var myJSONObject = <%= raw @rooms.to_json %>
+// For each room get session key 
+alert(myJSONObject);
 
-var str = "";
 
-for(var i = 0; i < myJSONObject.length; i++) {
-  str += myJSONObject[i].room.sessionId + "\n";
+for(var i = 0; i < myJSONObject.length; i++) { 
+
+  sessionId = myJSONObject[i].room.sessionId;
+
+  // Initialize each key in turn  
+  session = initializeSessionId(sessionId); 
+  
+  // start some specific session
+  session.connect();
 }
 
-alert(str);
+
+function initializeSessionId(sessionId) { 
+
+  session = TB.initSession(sessionId); 
+
+  session.addEventListener('sessionConnected', sessionConnectedHandler);
+  session.addEventListener('sessionDisconnected', sessionDisconnectedHandler);
+  session.addEventListener('connectionCreated', connectionCreatedHandler);
+  session.addEventListener('connectionDestroyed', connectionDestroyedHandler);
+  session.addEventListener('streamCreated', streamCreatedHandler);
+  session.addEventListener('streamDestroyed', streamDestroyedHandler);
+
+  return session;
+} 
+
+// on sessionConnected Select Random room (Active|Recent)
+function sessionConnectedHandler(event) { 
+  selectRandomRoom(event.target, event.streams)
+}
+
+
+function selectRandomRoom(targetSession, streams) { 
+
+  // Active SID
+  if(streams.length > 0 && streams.length < 6) { 
+    addStream(targetSession, streams);
+    return;
+  } 
+  // Recent SID 
+
+  if( true && streams.length > 0) {
+    addStream(targetSession, streams);
+    return;
+  }
+
+}
+
+function addStream(session, stream) {
+  if (stream.connection.connectionId == session.connection.connectionId) {
+    return;
+  }
+  var div = document.createElement('div');
+  var divId = stream.streamId;
+  div.setAttribute('id', divId);
+  document.body.appendChild(div);
+  subscribers[stream.streamId] = session.subscribe(stream, divId);
+}
 
