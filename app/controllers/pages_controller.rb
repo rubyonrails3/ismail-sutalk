@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     # New Time
     nt = Time.new(ct.year, ct.month, ct.day, ct.hour, ct.min, ct.sec, "-07:00")
     # Compare for the last ten minute visists 
-    @rooms = Room.where("created_at > ?", nt - 10.minutes)
+    @rooms = Room.where("created_at > ?", nt - 2.hours)
     render "pages/home/get_users"
   end
   

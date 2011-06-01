@@ -12,15 +12,14 @@ var myJSONObject = <%= raw @rooms.to_json %>
 
 
 for(var i = 0; i < myJSONObject.length; i++) { 
+
   sessionId = myJSONObject[i].sessionId;
 
   // Initialize each key in turn  
   session = initializeSessionId(sessionId);  
 
+  // true if recently created else false
   session.time = myJSONObject[i].time; 
-
-  console.log(session.time);
-
   
   // start some specific session
   session.connect();
@@ -51,13 +50,15 @@ function selectRandomRoom(targetSession, streams) {
 
   // Active SID
   if(streams.length > 0 && streams.length < 6) { 
-    addStream(targetSession, streams);
+    rand = new Date().getTime() % streams.length
+    addStream(targetSession, streams[rand]);
     return;
   } 
   // Recent SID 
 
-  if( true && streams.length > 0) {
-    addStream(targetSession, streams);
+  if( targetSession.time && streams.length > 0) {
+    rand = (new Date().getTime()) % streams.length
+    addStream(targetSession, streams[rand]);
     return;
   }
 
