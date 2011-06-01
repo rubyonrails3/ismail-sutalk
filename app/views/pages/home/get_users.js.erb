@@ -12,11 +12,15 @@ var myJSONObject = <%= raw @rooms.to_json %>
 
 
 for(var i = 0; i < myJSONObject.length; i++) { 
-  console.log(myJSONObject[i]);
-  sessionId = myJSONObject[i].room.sessionId;
+  sessionId = myJSONObject[i].sessionId;
 
   // Initialize each key in turn  
-  session = initializeSessionId(sessionId); 
+  session = initializeSessionId(sessionId);  
+
+  session.time = myJSONObject[i].time; 
+
+  console.log(session.time);
+
   
   // start some specific session
   session.connect();
