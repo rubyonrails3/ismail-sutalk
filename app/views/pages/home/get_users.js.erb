@@ -8,9 +8,8 @@
 
 var session = null;
 var myJSONObject = <%= raw @rooms.to_json %> 
-console.log(myJSONObject);
+console.log(myJSONObject[0].room);
 // For each room get session key 
-alert(myJSONObject);
 
 
 for(var i = 0; i < myJSONObject.length; i++) { 
